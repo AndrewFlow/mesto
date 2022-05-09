@@ -1,0 +1,22 @@
+.header {
+  position: relative;
+  padding-bottom: 41px;
+  max-width: 880px;
+  margin: 45px auto 0px;
+}
+
+.header::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  border-bottom: 1px solid #545454;
+}
+
+@media screen and (max-width: 1023px) {
+  .header {
+    margin: 27px auto 0px;
+    padding: 31px;
+  }
+}

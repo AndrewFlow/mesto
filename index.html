@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./pages/index.css">
+  <title>Mesto</title>
+</head>
+<body class="body">
+  <div class="page">
+    <header class="header">
+      <img class="header__logo" src="./images/logo.svg" alt="лого">
+    </header>
+    <main class="main">
+      <section class="profile">
+        <img class="profile__avatar" src="./images/profile.jpg" alt="аватар">
+        <div class="profile__info">
+          <div class="profile__about">
+            <h1 class="profile__user">Жак-Ив Кусто asfasf asf asf asgasgasgasg</h1>
+            <button class="profile__edit-button"></button>
+          </div>
+          <p class="profile__status">Исследователь океана</p>
+        </div>
+        <button class="profile__add-button">
+          <img class="profile__plus-image" src="./images/plus.svg" alt="плюс">
+        </button>
+      </section>
+      <section class="elements">
+        <ul class="cards">
+          <li class="cards__item">
+            <img class="cards__image" src="./images/cards-dog.jpg" alt="собака">
+            <div class="cards__info">
+              <h2 class="cards__title">Dogy</h2>
+              <button class="cards__icon"></button>
+            </div>
+          </li>
+          <li class="cards__item">
+            <img class="cards__image" src="./images/cards-cat.jpg" alt="кот">
+            <div class="cards__info">
+              <h2 class="cards__title">Cat</h2>
+              <button class="cards__icon"></button>
+            </div>
+          </li>
+          <li class="cards__item">
+            <img class="cards__image" src="./images/cards-shot.jpg" alt="снимок рентгена">
+            <div class="cards__info">
+              <h2 class="cards__title">"OK"</h2>
+              <button class="cards__icon"></button>
+            </div>
+          </li>
+          <li class="cards__item">
+            <img class="cards__image" src="./images/cards-hourses.jpg" alt="концерт">
+            <div class="cards__info">
+              <h2 class="cards__title">Concert</h2>
+              <button class="cards__icon"></button>
+            </div>
+          </li>
+          <li class="cards__item">
+            <img class="cards__image" src="./images/cards-unicorn.jpg" alt="единорог">
+            <div class="cards__info">
+              <h2 class="cards__title">"Walking here"</h2>
+              <button class="cards__icon"></button>
+            </div>
+          </li>
+          <li class="cards__item">
+            <img class="cards__image" src="./images/cards-snegovik.jpg" alt="снеговик">
+            <div class="cards__info">
+              <h2 class="cards__title">Vot tak vot</h2>
+              <button class="cards__icon"></button>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </main>
+    <footer class="footer">
+      <p class="footer__copyright">© 2022 Mesto Russia Andrew Flow</p>
+    </footer>
+    <section class="popup">
+      <div class="popup__container">
+        <img src="./images/close-icon.svg" class="popup__icon" alt="закрыть">
+        <h2 class="popup__title">Редактировать профиль</h2>
+        <form class="popup__form">
+          <fieldset class="popup__fieldset">
+            <label class="popup__field">
+              <input class="popup__input popup__input_type_name" type="text" placeholder="Имя" name="" id="">
+            </label>
+            <label class="popup__field">
+              <input class="popup__input popup__input_type_description" type="text" placeholder="Имя" name="" id="">
+            </label>
+            <button class="popup__submit">Сохранить</button>
+          </fieldset>
+        </form>
+      </div>
+    </section>
+  </div>
+  <script type="text/javascript" src="./scripts/script.js"></script>
+</body>
+
+</html>
