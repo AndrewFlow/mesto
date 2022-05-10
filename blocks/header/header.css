@@ -1,8 +1,8 @@
 .header {
   position: relative;
-  padding-bottom: 41px;
+  padding:45px 0px 41px;
   max-width: 880px;
-  margin: 45px auto 0px;
+  margin: 0 auto;
 }
 
 .header::after {
@@ -16,7 +16,6 @@
 
 @media screen and (max-width: 1023px) {
   .header {
-    margin: 27px auto 0px;
-    padding: 31px;
+    padding:28px 0px 32px 27px;
   }
 }

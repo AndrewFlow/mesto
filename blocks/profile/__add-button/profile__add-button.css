@@ -9,6 +9,9 @@
   padding: 0;
   text-align: center;
   cursor: pointer;
+  background-image: url(../../../images/plus.svg);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
 }
 
 .profile__add-button:hover {

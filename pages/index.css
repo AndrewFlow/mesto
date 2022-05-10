@@ -12,10 +12,6 @@
 
 @import url(../blocks/page/page.css);
 
-/* main */
-
-@import url(../blocks/main/main.css);
-
 /* header */
 
 @import url(../blocks/header/header.css);
@@ -31,7 +27,6 @@
 @import url(../blocks/profile/__avatar/profile__avatar.css);
 @import url(../blocks/profile/__user/profile__user.css);
 @import url(../blocks/profile/__status/profile__status.css);
-@import url(../blocks/profile/__plus-image/profile__plus-image.css);
 
 /* elements */
 
