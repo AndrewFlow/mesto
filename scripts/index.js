@@ -26,11 +26,11 @@ const initialCards = [
 ];
 
 const popup = document.querySelector('.popup');
-const popupEdit = document.querySelector('.popup__edit-profile');
-const popupAdd = document.querySelector('.popup__add-card');
+const popupEdit = document.querySelector('.popup__editprofile');
+const popupAdd = document.querySelector('.popup__addcard');
 const closeEditButton = popupEdit.querySelector(".popup__icon");
 const closeAddButton = popupAdd.querySelector(".popup__icon");
-const cardsOpenImage =  document.querySelector('.popup__open-image');
+const cardsOpenImage =  document.querySelector('.popup__openimage');
 const closeImagePopup = cardsOpenImage.querySelector(".popup__icon");
 const formElement  = document.querySelector('.popup__form');
 const formElementEdit = document.querySelector('.popup__form_type_edit');
