@@ -19,7 +19,5 @@
 }
 
 .cards__icon:active {
-  background-image: url(../../../images/like-black.svg);
-  opacity: 1;
   transition: all 0.1s ease-in-out;
 }

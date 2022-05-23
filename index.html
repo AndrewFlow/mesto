@@ -26,59 +26,18 @@
       </section>
       <section class="elements">
         <ul class="cards">
-          <li class="cards__item">
-            <img class="cards__image" src="./images/cards-dog.jpg" alt="собака">
-            <div class="cards__info">
-              <h2 class="cards__title">Dogy</h2>
-              <button class="cards__icon"></button>
-            </div>
-          </li>
-          <li class="cards__item">
-            <img class="cards__image" src="./images/cards-cat.jpg" alt="кот">
-            <div class="cards__info">
-              <h2 class="cards__title">Cat</h2>
-              <button class="cards__icon"></button>
-            </div>
-          </li>
-          <li class="cards__item">
-            <img class="cards__image" src="./images/cards-shot.jpg" alt="снимок рентгена">
-            <div class="cards__info">
-              <h2 class="cards__title">"OK"</h2>
-              <button class="cards__icon"></button>
-            </div>
-          </li>
-          <li class="cards__item">
-            <img class="cards__image" src="./images/cards-hourses.jpg" alt="концерт">
-            <div class="cards__info">
-              <h2 class="cards__title">Concert</h2>
-              <button class="cards__icon"></button>
-            </div>
-          </li>
-          <li class="cards__item">
-            <img class="cards__image" src="./images/cards-unicorn.jpg" alt="единорог">
-            <div class="cards__info">
-              <h2 class="cards__title">"Walking here"</h2>
-              <button class="cards__icon"></button>
-            </div>
-          </li>
-          <li class="cards__item">
-            <img class="cards__image" src="./images/cards-snegovik.jpg" alt="снеговик">
-            <div class="cards__info">
-              <h2 class="cards__title">Vot tak vot</h2>
-              <button class="cards__icon"></button>
-            </div>
-          </li>
+
         </ul>
       </section>
     </main>
     <footer class="footer">
       <p class="footer__copyright">© 2022 Mesto Russia Andrew Flow</p>
     </footer>
-    <section class="popup">
+    <section class="popup popup__edit-profile">
       <div class="popup__container">
         <button class="popup__icon" type="button"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
-        <form class="popup__form">
+        <form class="popup__form popup__form_type_edit">
           <fieldset class="popup__fieldset">
             <label class="popup__field">
               <input class="popup__input popup__input_type_name" type="text" placeholder="Жак-Ив Кусто">
@@ -91,7 +50,44 @@
         </form>
       </div>
     </section>
+    <section class="popup popup__add-card">
+      <div class="popup__container">
+        <button class="popup__icon" type="button"></button>
+        <h2 class="popup__title">Новое место</h2>
+        <form class="popup__form popup__form_type_add">
+          <fieldset class="popup__fieldset">
+            <label class="popup__field">
+              <input class="popup__input popup__input_type_cardname" type="text" placeholder="Название">
+            </label>
+            <label class="popup__field">
+              <input class="popup__input popup__input_type_cardlink" type="url" placeholder="Ссылка на картинку">
+            </label>
+            <button type="submit" class="popup__submit">Сохранить</button>
+          </fieldset>
+        </form>
+      </div>
+    </section>
+    <section class="popup popup__open-image">
+      <div class="popup__body">
+        <div class="popup__inner">
+          <img class="popup__image" src="" alt="">
+          <p class="popup__description"></p>
+        </div>
+        <button class="popup__icon" type="button"></button>
+      </div>
+      <div class="popup__overlay"></div>
+    </section>
   </div>
+  <template class="cards__template">
+    <li class="cards__item">
+      <img class="cards__image" src="" alt="">
+      <div class="cards__info">
+        <h2 class="cards__title"></h2>
+        <button class="cards__icon"></button>
+      </div>
+      <button class="cards__delete"></button>
+    </li>
+  </template>
   <script type="text/javascript" src="./scripts/index.js"></script>
 </body>
 
