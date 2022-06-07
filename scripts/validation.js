@@ -1,4 +1,4 @@
-  enableValidation ({
+  const validationConfig = enableValidation ({
     formSelector: '.popup__form',
     inputSelector: '.popup__input',
     submitButtonSelector: '.popup__button',
@@ -7,16 +7,6 @@
     errorClass: 'popup__error_visible'
   });
 
-  // получаем формы
-
-  // форма edit
-  const formElementEdit = document.forms.edit;
-  const nameEdit = formElementEdit.elements.nameInput;
-  const descriptionEdit = formElementEdit.elements.descriptionInput;
-  //форма add
-  const formElementAdd = document.forms.add;
-  const placeName = formElementAdd.elements.placeName;
-  const placeLink = formElementAdd.elements.placeLink;
 
   // функция включения настроек enableValidation
   function enableValidation(settings) {
@@ -32,9 +22,26 @@
     {
       if (buttonElement.classList.contains(settings.inactiveButtonClass))// проверяет,есть ли активный класс кнопки
       {
-        buttonElement.classList.remove(settings.inactiveButtonClass);
-      }
-    }
+        buttonElement.classList.remove(settings.inactiveButtonClass)
+      };
+    };
+  };
+
+  //удаление класса с элементов
+
+  function deleteElem (elem, className) {
+    elem.forEach((item)=>{
+      item.classList.remove(className);
+    });
+  };
+
+  // очистить форму
+  function cleanErrors (form, buttonElement) {
+    const itemErrors = form.querySelectorAll(`.${settings.errorClass}`);
+    const inputErrors = form.querySelectorAll(`.${settings.inputErrorClass}`);
+    deleteElem(itemErrors, settings.errorClass);
+    deleteElem(inputErrors, settings.inputErrorClass);
+    buttonElement.classList.add(settings.inactiveButtonClass);
   };
 
   // показывает ошибки валидации
@@ -67,6 +74,7 @@
     });
   };
 
+
   // настраиваем валидацию форм
   function setupFormValidation (form) {
     const inputList = Array.from(form.querySelectorAll(settings.inputSelector));
@@ -78,10 +86,13 @@
       toggleButtonState(inputList, submitButton);
       }
     ));
+    form.addEventListener('reset', ()=>cleanErrors(form,submitButton));
   };
-
   // направляем валидацию всех форм в setupFormValidation
   allForms.forEach((form)=>{
     setupFormValidation(form);
   });
 };
+
+
+

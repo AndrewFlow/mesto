@@ -1,33 +1,6 @@
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
 
-const popup = document.querySelector('.popup');
-const popupEdit = document.querySelector('#editprofile');
-const popupAdd = document.querySelector('#addcard');
+const popupEditProfile = document.querySelector('#editprofile');
+const popupAddCard = document.querySelector('#addcard');
 const cardsOpenImage =  document.querySelector('#openimage');
 const imageBig = cardsOpenImage.querySelector('.popup__image');
 const titleImageBig = cardsOpenImage.querySelector('.popup__description');
@@ -39,6 +12,18 @@ const profInfo = document.querySelector('.profile__status');
 const nameInput  = document.querySelector('#name-input');
 const jobInput = document.querySelector('#description-input');
 const cardsTemplate = document.querySelector(".cards__template").content;
+
+  // получаем формы
+
+  // форма edit
+const formElementEdit = document.forms.edit;
+const nameEdit = formElementEdit.elements.nameInput;
+const descriptionEdit = formElementEdit.elements.descriptionInput;
+  //форма add
+const formElementAdd = document.forms.add;
+const placeName = formElementAdd.elements.placeName;
+const placeLink = formElementAdd.elements.placeLink;
+
 
 // открыть любой попап
 
@@ -85,7 +70,7 @@ function openPhoto(cardLink, cardName) {
 
 // добавление карточки
 
-function renderItem(data) {
+function createCard(data) {
   const cardLink = data.link;
   const cardName = data.name;
   const cardsElement = cardsTemplate.querySelector('.cards__item').cloneNode(true);
@@ -111,7 +96,7 @@ function renderItem(data) {
 
 function renderCard(data)
 {
-  const cardsElement = renderItem(data);
+  const cardsElement = createCard(data);
   cardsList.prepend(cardsElement);
 };
 
@@ -139,17 +124,19 @@ popups.forEach((popup) => {
     });
 });
 
+
+
 // открытие формы редактирования профиля
 function openEditForm () {
   nameInput.value = profUser.textContent;
   jobInput.value = profInfo.textContent;
-  openPopup(popupEdit);
+  openPopup(popupEditProfile);
 };
 
 // открытие попапа добавления карточки
 
 function openAddForm () {
-  openPopup(popupAdd);
+  openPopup(popupAddCard);
 };
 
 // очистка поля ввода редактирования профиля
@@ -157,7 +144,7 @@ function sendSubmitForm(evt) {
   evt.preventDefault();
   profUser.textContent = nameInput.value;
   profInfo.textContent = jobInput.value;
-  closePopup(popupEdit);
+  closePopup(popupEditProfile);
 };
 
 // редактирования попапа добавления карточки
@@ -169,13 +156,13 @@ function sendAddCardForm(evt) {
   };
   evt.target.reset();
   renderCard(cardsItem, true);
-  closePopup(popupAdd);
+  closePopup(popupAddCard);
 };
 
 // запуск
 
-popupEdit.addEventListener('click', mouseHandler);
-popupAdd.addEventListener('click', mouseHandler);
+popupEditProfile.addEventListener('click', mouseHandler);
+popupAddCard.addEventListener('click', mouseHandler);
 cardsOpenImage.addEventListener('click', mouseHandler);
 openAddButton.addEventListener('click',openAddForm);
 openEditButton.addEventListener ('click',openEditForm);
