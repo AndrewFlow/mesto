@@ -3,10 +3,13 @@
   max-width: 358px;
   width: 100%;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  padding:0px 0px 13px 0px;
+  padding:13px 0px 13px 0px;
   align-self: center;
   outline: none;
+
 }
+
+
 
 @media screen and (max-width: 1023px) {
   .popup__input {
