@@ -1,12 +1,13 @@
-  const validationConfig = enableValidation ({
+const validationConfig = {
     formSelector: '.popup__form',
     inputSelector: '.popup__input',
     submitButtonSelector: '.popup__button',
     inactiveButtonClass: 'popup__button_disabled',
     inputErrorClass: 'popup__input_type_error',
     errorClass: 'popup__error_visible'
-  });
+  };
 
+  enableValidation(validationConfig);
 
   // функция включения настроек enableValidation
   function enableValidation(settings) {
@@ -17,12 +18,14 @@
     if (hasInvalidInput(inputList))
     {
       buttonElement.classList.add(settings.inactiveButtonClass);
+      buttonElement.setAttribute('disabled',true);
     }
     else
     {
       if (buttonElement.classList.contains(settings.inactiveButtonClass))// проверяет,есть ли активный класс кнопки
       {
-        buttonElement.classList.remove(settings.inactiveButtonClass)
+        buttonElement.classList.remove(settings.inactiveButtonClass);
+        buttonElement.removeAttribute('disabled',false);
       };
     };
   };
