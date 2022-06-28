@@ -1,5 +1,5 @@
-import {cardsOpenImage, imageBig, titleImageBig, openPopup} from './index.js';
-
+import {openPopup} from './utils/utils.js';
+import {cardsOpenImage, imageBig, titleImageBig} from './utils/constants.js';
 export class Card {
   constructor(dataItem, selectors) {
     this._link = dataItem.link;
@@ -54,7 +54,6 @@ export class Card {
     this._setEventOpenPopup()
     this._setEventDelete();
     this._setEventSetLikes();
-
     return this._templateElement;
   }
 }

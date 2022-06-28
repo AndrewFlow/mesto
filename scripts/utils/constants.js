@@ -1,3 +1,7 @@
+export const popups = document.querySelectorAll('.popup');
+export const cardsOpenImage = document.querySelector('#openimage');
+export const imageBig = cardsOpenImage.querySelector('.popup__image');
+export const titleImageBig = cardsOpenImage.querySelector('.popup__description');
 export const initialCards = [
   {
     name: 'Архыз',
@@ -43,4 +47,3 @@ export const cardConfig = {
   templateLikeActive: 'cards__icon_active',
   templateDelete: '.cards__delete',
 }
-
