@@ -1,11 +1,11 @@
-import './pages/index.css';
-import Section from "./components/Section.js";
-import UserInfo from './components/UserInfo.js';
-import PopupWithImage from "./components/PopupWithImage.js";
-import PopupWithForm from "./components/PopupWithForm.js";
-import { FormValidator } from './components/FormValidator.js';
-import { Card } from './components/Card.js';
-import {validationConfig, initialCards, cardConfig,openAddButton,openEditButton,profUser,profInfo,formElementEdit,formElementAdd} from './utils/constants.js';
+import './index.css';
+import Section from "../components/Section.js";
+import UserInfo from '../components/UserInfo.js';
+import PopupWithImage from "../components/PopupWithImage.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import { FormValidator } from '../components/FormValidator.js';
+import { Card } from '../components/Card.js';
+import {validationConfig, initialCards, cardConfig,openAddButton,openEditButton,profUser,profInfo,formElementEdit,formElementAdd} from '../utils/constants.js';
 
 // Взяли данные юзера
 const usersInfos = new UserInfo({
