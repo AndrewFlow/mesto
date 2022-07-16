@@ -1,9 +1,8 @@
-import {openPopup} from './utils/utils.js';
-import {cardsOpenImage, imageBig, titleImageBig} from './utils/constants.js';
+
 export class Card {
-  constructor(dataItem, selectors) {
-    this._link = dataItem.link;
-    this._name = dataItem.name;
+  constructor(dataItem, selectors,handleCardClick) {
+    this._link = dataItem.placeLink || dataItem.link;
+    this._name = dataItem.placeName || dataItem.name;
     this._template = selectors.template;
     this._templateElement = selectors.templateElement;
     this._templateImage = selectors.templateImage;
@@ -11,6 +10,7 @@ export class Card {
     this._templateDelete = selectors.templateDelete;
     this._templateLike = selectors.templateLike;
     this._templateLikeActive = selectors.templateLikeActive;
+    this._handleCardClick = handleCardClick;
   }
 
   _createCard() {
@@ -30,10 +30,10 @@ export class Card {
 
   _setEventOpenPopup() {
     this._templateImage.addEventListener('click', ()=>{
-      imageBig.src = this._link;
-      imageBig.setAttribute('alt', this._name);
-      titleImageBig.textContent = this._name;
-      openPopup(cardsOpenImage);
+      this._handleCardClick ( {
+        link: this._link,
+        name: this._name
+      })
     });
   };
 
@@ -47,11 +47,10 @@ export class Card {
       this._templateLike.classList.toggle(this._templateLikeActive);
     });
   }
-
   addCard(){
     this._createCard();
     this._setCardData();
-    this._setEventOpenPopup()
+    this._setEventOpenPopup();
     this._setEventDelete();
     this._setEventSetLikes();
     return this._templateElement;

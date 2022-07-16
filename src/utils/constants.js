@@ -2,6 +2,13 @@ export const popups = document.querySelectorAll('.popup');
 export const cardsOpenImage = document.querySelector('#openimage');
 export const imageBig = cardsOpenImage.querySelector('.popup__image');
 export const titleImageBig = cardsOpenImage.querySelector('.popup__description');
+export const openAddButton = document.querySelector(".profile__add-button");
+export const openEditButton = document.querySelector(".profile__edit-button");
+export const profUser = document.querySelector('.profile__user');
+export const profInfo = document.querySelector('.profile__status');
+export const formElementEdit = document.forms.edit;
+export const formElementAdd = document.forms.add;
+
 export const initialCards = [
   {
     name: 'Архыз',

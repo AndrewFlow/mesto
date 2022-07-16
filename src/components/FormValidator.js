@@ -8,23 +8,20 @@ export class FormValidator {
     this._errorClass = validationConfig.errorClass;
     this._formElement = formElement;
   }
-
   // активируем кнопку
-  _activateButton () {
+  activateButton () {
     this._submitButton.classList.add(this._inactiveButtonClass);
     this._submitButton.setAttribute('disabled', true);
   }
-
   // деактивируем кнопку
   _deactivateButton () {
     this._submitButton.classList.remove(this._inactiveButtonClass);
     this._submitButton.removeAttribute('disabled', false);
   }
-
  // переключаем состояние кнопки
   _toggleButtonState() {
     if (this._hasInvalidInput()) { //
-      this._activateButton();
+      this.activateButton();
     }
     else {
       if (this._submitButton.classList.contains(this._inactiveButtonClass)) {
@@ -32,21 +29,18 @@ export class FormValidator {
       };
     };
   };
-
   // показывает ошибки валидации
   _showInputError(input, error) {
     input.classList.add(this._inputErrorClass);
     error.classList.add(this._errorClass);
     error.textContent = input.validationMessage;
   };
-
   // убирает ошибки валидации
   _hideInputError(input, error) {
     input.classList.remove(this._inputErrorClass);
     error.classList.remove(this._errorClass);
     error.textContent = '';
   };
-
   // проверяем валидность поля
   _checkInputValidity(input, error) {
     if (!input.validity.valid) {
@@ -55,7 +49,6 @@ export class FormValidator {
       this._hideInputError(input, error);
     }
   };
-
   resetForms() {
     this._inputList.forEach(errorElement => {
       const error = this._formElement.querySelector(`.${errorElement.id}-error`);
@@ -63,14 +56,12 @@ export class FormValidator {
     });
     this._deactivateButton();
   }
-
   //Есть ли в форме хоть одно несоответсвие
   _hasInvalidInput() {
     return this._inputList.some((inputElement) => {
       return !inputElement.validity.valid;
     });
   };
-
   // настраиваем валидацию форм
   enableValidation() {
     this._inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
@@ -82,7 +73,7 @@ export class FormValidator {
       this._toggleButtonState();
     }
     ));
-    this._formElement.addEventListener('reset', ()=> this._activateButton ());//сброс поля ввода после отправки формы addForm
+    this._formElement.addEventListener('reset', ()=> this.activateButton ());//сброс поля ввода после отправки формы addForm
   };
 }
 
