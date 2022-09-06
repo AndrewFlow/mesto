@@ -4,7 +4,7 @@ import Section from "../components/Section.js";
 import UserInfo from '../components/UserInfo.js';
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
-import PopupDelete from '../components/PopupDelete.js';
+import PopupWithConfirmation from '../components/PopupWithConfirmation.js';
 import { FormValidator } from '../components/FormValidator.js';
 import { Card } from '../components/Card.js';
 import {
@@ -146,7 +146,7 @@ function likeCard(likeCard, templateLikeActive, idCard, numberLike) {
 
 // Удаление карточек
 
-const deleteCardPopup = new PopupDelete(openDeletePopup, (card, idCard) => {
+const deleteCardPopup = new PopupWithConfirmation(openDeletePopup, (card, idCard) => {
   api.deleteCard(idCard)
     .then(() => {
       card.remove();
