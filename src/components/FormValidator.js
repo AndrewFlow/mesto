@@ -14,7 +14,7 @@ export class FormValidator {
     this._submitButton.setAttribute('disabled', true);
   }
   // деактивируем кнопку
-  _deactivateButton () {
+  deactivateButton () {
     this._submitButton.classList.remove(this._inactiveButtonClass);
     this._submitButton.removeAttribute('disabled', false);
   }
@@ -25,21 +25,29 @@ export class FormValidator {
     }
     else {
       if (this._submitButton.classList.contains(this._inactiveButtonClass)) {
-        this._deactivateButton ();
+        this.deactivateButton ();
       };
     };
   };
   // показывает ошибки валидации
   _showInputError(input, error) {
+    
     input.classList.add(this._inputErrorClass);
+    
     error.classList.add(this._errorClass);
+    
     error.textContent = input.validationMessage;
+    
   };
   // убирает ошибки валидации
   _hideInputError(input, error) {
+    
     input.classList.remove(this._inputErrorClass);
+    
     error.classList.remove(this._errorClass);
+    
     error.textContent = '';
+    
   };
   // проверяем валидность поля
   _checkInputValidity(input, error) {
@@ -54,7 +62,7 @@ export class FormValidator {
       const error = this._formElement.querySelector(`.${errorElement.id}-error`);
       this._hideInputError(errorElement,error);
     });
-    this._deactivateButton();
+    this.deactivateButton();
   }
   //Есть ли в форме хоть одно несоответсвие
   _hasInvalidInput() {
@@ -68,7 +76,7 @@ export class FormValidator {
     this._submitButton = this._formElement.querySelector(this._submitButtonSelector);
     this._formElement.addEventListener('input', ((evt) => {
       const input = evt.target;
-      const error = this._formElement.querySelector(`.${input.id}-error`);
+      const error = this._formElement.querySelector(`.${input.id}-error`) || this._formElement.querySelector(`#${input.id}-error`);
       this._checkInputValidity(input, error);
       this._toggleButtonState();
     }
