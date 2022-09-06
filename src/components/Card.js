@@ -1,6 +1,8 @@
 
+import { usersInfos } from '../pages/index.js';
+
 export class Card {
-  constructor(dataItem, selectors,handleCardClick) {
+  constructor(dataItem, selectors, handleCardClick, handleCardLike, handleCardDelete) {
     this._link = dataItem.placeLink || dataItem.link;
     this._name = dataItem.placeName || dataItem.name;
     this._template = selectors.template;
@@ -10,7 +12,13 @@ export class Card {
     this._templateDelete = selectors.templateDelete;
     this._templateLike = selectors.templateLike;
     this._templateLikeActive = selectors.templateLikeActive;
+    this._templateCounter = selectors.templateCounter;
     this._handleCardClick = handleCardClick;
+    this._idCard = dataItem._id;
+    this._userId = dataItem.owner._id;
+    this._cardLike = dataItem.likes;
+    this._handleCardLike = handleCardLike;
+    this._handleCardDelete = handleCardDelete;
   }
 
   _createCard() {
@@ -20,6 +28,7 @@ export class Card {
     this._templateTitle = this._templateElement.querySelector(this._templateTitle);
     this._templateLike = this._templateElement.querySelector(this._templateLike);
     this._templateDelete = this._templateElement.querySelector(this._templateDelete);
+    this._likeCounter = this._templateElement.querySelector(this._templateCounter);
   };
 
   _setCardData() {
@@ -28,31 +37,40 @@ export class Card {
     this._templateTitle.textContent = this._name;
   }
 
-  _setEventOpenPopup() {
-    this._templateImage.addEventListener('click', ()=>{
-      this._handleCardClick ( {
+  _setEventPopup() {
+    this._templateImage.addEventListener('click', () => {
+      this._handleCardClick({
         link: this._link,
         name: this._name
       })
     });
+    this._templateLike.addEventListener('click', () => {
+      this._handleCardLike(this._templateLike, this._templateLikeActive, this._idCard, this._likeCounter);
+    });
+    this._templateDelete.addEventListener('click', () => {
+      this._handleCardDelete(this._templateElement, this._idCard);
+    });
   };
 
-  _setEventDelete() {
-    this._templateDelete.addEventListener('click',()=>{
-      this._templateElement.remove();
-    });
+
+  _checkLike() {
+    if (this._cardLike.some((like) => like._id === usersInfos.getId())) {
+      this._templateLike.classList.add(this._templateLikeActive);
+    }
   }
-  _setEventSetLikes() {
-    this._templateLike.addEventListener('click',()=>{
-      this._templateLike.classList.toggle(this._templateLikeActive);
-    });
+  _checkDelete() {
+    this._likeCounter.textContent = this._cardLike.length;
+    if (this._userId !== usersInfos.getId()) {
+      this._templateDelete.remove();
+    }
   }
-  addCard(){
+
+  addCard() {
     this._createCard();
     this._setCardData();
-    this._setEventOpenPopup();
-    this._setEventDelete();
-    this._setEventSetLikes();
+    this._setEventPopup();
+    this._checkDelete()
+    this._checkLike()
     return this._templateElement;
   }
 }
