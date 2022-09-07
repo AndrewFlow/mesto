@@ -1,6 +1,7 @@
 # Проект: <a href="https://andrewflow.github.io/mesto/">"Место"</a> by AndrewFlow
 
-![World Map](https://user-images.githubusercontent.com/95470563/188941515-5050ee4b-53bd-4c32-be3d-b30c38bbe6e9.svg)
+![Icon Grid (2)](https://user-images.githubusercontent.com/95470563/188946135-fed8a49a-377f-4b67-baaa-23d620c36311.svg)
+
 
 <h2>**About**</h2>
 
