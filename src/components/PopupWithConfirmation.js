@@ -1,10 +1,10 @@
 import Popup from "./Popup.js";
 
-export default class PopupDelete extends Popup {
-  constructor(popupSelector, handleCardDelete) {
-    super(popupSelector);
+export default class PopupWithConfirmation extends Popup {
+  constructor(popupElement, handleCardDelete) {
+    super(popupElement);
     this._handleCardDelete = handleCardDelete;
-    this._popupDelete = this._popupSelector.querySelector('.popup__form');
+    this._popupDelete = this._popupElement.querySelector('.popup__form');
   };
 
   open(card, idCard) {

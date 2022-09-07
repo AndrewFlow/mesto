@@ -41,13 +41,9 @@ export class FormValidator {
   };
   // убирает ошибки валидации
   _hideInputError(input, error) {
-    
     input.classList.remove(this._inputErrorClass);
-    
     error.classList.remove(this._errorClass);
-    
     error.textContent = '';
-    
   };
   // проверяем валидность поля
   _checkInputValidity(input, error) {
@@ -59,7 +55,7 @@ export class FormValidator {
   };
   resetForms() {
     this._inputList.forEach(errorElement => {
-      const error = this._formElement.querySelector(`.${errorElement.id}-error`);
+      const error = this._formElement.querySelector(`.${errorElement.id}-error`) || this._formElement.querySelector(`#${errorElement.id}-error`);
       this._hideInputError(errorElement,error);
     });
     this.deactivateButton();

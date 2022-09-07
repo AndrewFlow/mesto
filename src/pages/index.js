@@ -34,7 +34,7 @@ Promise.all([api.getInfo(), api.getInitialCards()])
 // добавление и создание карточек
 
 function createCard(data) {
-  const newCard = new Card(data, cardConfig, bigImage, likeCard, deleteCard).addCard();//
+  const newCard = new Card(data, cardConfig, usersInfos, showBigImage, likeCard, openConfirmationPopup).addCard();
   return newCard;
 }
 const сardList = new Section({
@@ -75,9 +75,11 @@ export const usersInfos = new UserInfo({
 
 // Редактирование аватара
 function openEditAvatar() {
+  editAvatarValidation.resetForms();
   const userData = usersInfos.getInfo();
+  editAvatarValidation.activateButton();
   popupEditAvatar.setInputs(userData);
-  editAvatarValidation.deactivateButton();
+  formElementAvatar.reset();
   popupEditAvatar.open();
 }
 const popupEditAvatar = new PopupWithForm(popupAvatar, (data) => {
@@ -85,6 +87,7 @@ const popupEditAvatar = new PopupWithForm(popupAvatar, (data) => {
     .then((data) => {
       usersInfos.setInfo(data);
       popupEditAvatar.close();
+
     })
     .catch((err) => {
       console.log(err);
@@ -146,30 +149,30 @@ function likeCard(likeCard, templateLikeActive, idCard, numberLike) {
 
 // Удаление карточек
 
-const deleteCardPopup = new PopupWithConfirmation(openDeletePopup, (card, idCard) => {
-  api.deleteCard(idCard)
+const popupConfirmation = new PopupWithConfirmation(openDeletePopup, (card, idCard) => {
+  api.openConfirmationPopup(idCard)
     .then(() => {
       card.remove();
       card = null;
     })
     .then(() => {
-      deleteCardPopup.close();
+      popupConfirmation.close();
     })
     .catch((err) => {
       console.log(err);
     })
 });
 
-function deleteCard(card, idCard) {
-  deleteCardPopup.open(card, idCard);
+function openConfirmationPopup(card, idCard) {
+  popupConfirmation.open(card, idCard);
 }
-deleteCardPopup.setEventListeners();
+popupConfirmation.setEventListeners();
 
 
 // открытие большого фото
 
 const bigImagePopup = new PopupWithImage(popupOpenImage, photoImageBig, titleImageBig);
-function bigImage({ link, name }) {
+function showBigImage({ link, name }) {
   bigImagePopup.open(
     { name, link }
   );

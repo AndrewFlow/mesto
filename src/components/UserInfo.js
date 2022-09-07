@@ -19,11 +19,12 @@ export default class UserInfo {
 }
 
   // Возвращает данные User
-  setInfo(res) {
+  setInfo(res) { 
+    if(res.name,res.about,res.avatar) {
       this._userName.textContent = res.name;
       this._userDescription.textContent = res.about;
       this._userAvatar.src = res.avatar;
       this._userId = res._id;
+    }
   }
-
 }

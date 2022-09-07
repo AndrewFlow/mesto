@@ -87,7 +87,7 @@ export default class Api {
     }
 
     // Удаление карточек
-    deleteCard(card) {
+    openConfirmationPopup(card) {
         return fetch(`${this._url}/cards/${card}`, {
             method: 'DELETE',
             headers: this._headers,

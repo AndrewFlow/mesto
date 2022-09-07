@@ -1,8 +1,5 @@
-
-import { usersInfos } from '../pages/index.js';
-
 export class Card {
-  constructor(dataItem, selectors, handleCardClick, handleCardLike, handleCardDelete) {
+  constructor(dataItem, selectors, usersInfos, handleCardClick, handleCardLike, handleCardDelete) {
     this._link = dataItem.placeLink || dataItem.link;
     this._name = dataItem.placeName || dataItem.name;
     this._template = selectors.template;
@@ -19,6 +16,7 @@ export class Card {
     this._cardLike = dataItem.likes;
     this._handleCardLike = handleCardLike;
     this._handleCardDelete = handleCardDelete;
+    this._usersInfos = usersInfos;
   }
 
   _createCard() {
@@ -52,15 +50,14 @@ export class Card {
     });
   };
 
-
   _checkLike() {
-    if (this._cardLike.some((like) => like._id === usersInfos.getId())) {
+    if (this._cardLike.some((like) => like._id === this._usersInfos.getId())) {
       this._templateLike.classList.add(this._templateLikeActive);
     }
   }
   _checkDelete() {
     this._likeCounter.textContent = this._cardLike.length;
-    if (this._userId !== usersInfos.getId()) {
+    if (this._userId !== this._usersInfos.getId()) {
       this._templateDelete.remove();
     }
   }
