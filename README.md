@@ -1,4 +1,4 @@
-# Проект: <a href="https://andrewflow.github.io/mesto/">Место</a> by AndrewFlow
+# Проект: <a href="https://andrewflow.github.io/mesto/">"Место"</a> by AndrewFlow
 
 ###
 
